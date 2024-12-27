@@ -10,11 +10,12 @@ class RequestService {
 
     async makePost(route, content) {
         const url = `${this.baseUrl}/${route}`;
+
         try {
-            await fetch(url, {
+            const response = await fetch(url, {
                 method: 'POST',
                 headers: {
-                    'Accept': '*/*',
+                    'Accept': 'application/json',
                     'Accept-Encoding': 'deflate, gzip',
                     'Content-Type': 'application/json'
                 },
@@ -22,13 +23,15 @@ class RequestService {
             });
     
             if (!response.ok) {
+                throw new Error(`Status: ${response.status}`);
                 return {
                     type: 'error',
-                    data: `Status: ${response.status}`
-                };
+                    data: `${response.status}: ${response.text}`
+                }
             }
     
             const data = await response.json();
+    
             return {
                 type: 'success',
                 data: data

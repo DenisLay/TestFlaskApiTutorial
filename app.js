@@ -39,12 +39,12 @@ window.onload = () => {
         
         const email = document.querySelector('.signin-email').value;
         const password = document.querySelector('.signin-password').value;
-        /*result = await requestService.makePost('public/signin', {
+        result = await requestService.makePost('public/signin', {
             email: email,
             password: password
         });
 
-        console.log(result);*/
+        console.log(result);
     });
 
     signupForm.addEventListener('submit', async (e) => {
@@ -57,7 +57,7 @@ window.onload = () => {
             password: password
         });
 
-        console.log(result.data.message);
+        console.log(result);
     });
 
     /*signin.onclick = () => {
