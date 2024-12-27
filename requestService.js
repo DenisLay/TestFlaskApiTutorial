@@ -14,6 +14,8 @@ class RequestService {
             await fetch(url, {
                 method: 'POST',
                 headers: {
+                    'Accept': '*/*',
+                    'Accept-Encoding': 'deflate, gzip',
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(content)
